@@ -36,4 +36,9 @@ jobs:
           USERNAME: k2tekgkxldvy
           PASSWORD: Shivsh@kti50
           REMOTE_DIR: public_html
-       
+        run: |
+          lftp -c "
+          open -u $USER,$PASS $HOST
+          mirror -R build $REMOTE_DIR
+          bye
+          "
