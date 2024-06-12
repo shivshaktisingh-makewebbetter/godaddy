@@ -27,18 +27,12 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Install lftp
-        run: sudo apt-get install lftp
-
       - name: Deploy to GoDaddy
-        env:
-          HOST: 72.167.125.133
-          USERNAME: k2tekgkxldvy
-          PASSWORD: Shivsh@kti50
-          REMOTE_DIR: public_html
-        run: |
-          lftp -c "
-          open -u $USER,$PASS $HOST
-          mirror -R build $REMOTE_DIR
-          bye
-          "
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          ftp-server: ftp.shivshaktisinghbhadauriya.in
+          ftp-username: newftp@shivshaktisinghbhadauriya.in
+          ftp-password: Shivsh@kti50
+          local-dir: build
+          remote-dir: public_html
+
