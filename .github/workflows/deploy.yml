@@ -30,9 +30,9 @@ jobs:
       - name: Deploy to GoDaddy
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          ftp-server: ftp.shivshaktisinghbhadauriya.in
-          ftp-username: newftp@shivshaktisinghbhadauriya.in
-          ftp-password: Shivsh@kti50
+          server: ftp.shivshaktisinghbhadauriya.in
+          username: newftp@shivshaktisinghbhadauriya.in
+          password: Shivsh@kti50
           local-dir: build
           remote-dir: public_html
 
