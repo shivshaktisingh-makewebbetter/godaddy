@@ -1,44 +1,44 @@
-name: Deploy to GoDaddy
+# name: Deploy to GoDaddy
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Build the project
-        run: npm run build
+#       - name: Build the project
+#         run: npm run build
 
-      - name: Install lftp
-        run: sudo apt-get install lftp
+#       - name: Install lftp
+#         run: sudo apt-get install lftp
 
-      - name: Deploy to GoDaddy
-        env:
-          HOST: 72.167.125.133
-          USERNAME: k2tekgkxldvy
-          PASSWORD: Shivsh@kti50
-          REMOTE_DIR: public_html
-        run: |
-          lftp -c "
-          set ssl:verify-certificate no
-          open -u $USERNAME,$PASSWORD $HOST
-          mirror -R build $REMOTE_DIR
-          bye
-          "
+#       - name: Deploy to GoDaddy
+#         env:
+#           HOST: 72.167.125.133
+#           USERNAME: k2tekgkxldvy
+#           PASSWORD: Shivsh@kti50
+#           REMOTE_DIR: public_html
+#         run: |
+#           lftp -c "
+#           set ssl:verify-certificate no
+#           open -u $USERNAME,$PASSWORD $HOST
+#           mirror -R build $REMOTE_DIR
+#           bye
+#           "
 
 
